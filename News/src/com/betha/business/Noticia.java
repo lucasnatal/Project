@@ -14,6 +14,7 @@ import javax.persistence.Table;
  * @author Jaaziel Lopes
  * 
  * */
+
 @Entity
 @Table(name = "noticias")
 public class Noticia {
