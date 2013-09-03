@@ -2,37 +2,48 @@ package com.betha.business;
 
 import java.util.Calendar;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 /**
  * @author Jaaziel Lopes
  * 
  * */
-
+@Entity
+@Table(name = "noticias")
 public class Noticia {
 	private Integer id;
 	private String img;
 	private String descricao;
 	private Categoria categoria;
 	private Calendar dateTimePublicacao;
-	private Calendar dateTimeAtualização;
+	private Calendar dateTimeAtualizacao;
 	private String autor;
 	private String titulo;
 	private Boolean status;
 
 	public Noticia(Integer id, String img, String descricao,
 			Categoria categoria, Calendar dateTimePublicacao,
-			Calendar dateTimeAtualização, String autor, String titulo,
+			Calendar dateTimeAtualizacao, String autor, String titulo,
 			Boolean status) {
 		this.id = id;
 		this.img = img;
 		this.descricao = descricao;
 		this.categoria = categoria;
 		this.dateTimePublicacao = dateTimePublicacao;
-		this.dateTimeAtualização = dateTimeAtualização;
+		this.dateTimeAtualizacao = dateTimeAtualizacao;
 		this.autor = autor;
 		this.titulo = titulo;
 		this.status = status;
 	}
 
+	@Id
+	@GeneratedValue
 	public Integer getId() {
 		return id;
 	}
@@ -57,6 +68,9 @@ public class Noticia {
 		this.descricao = descricao;
 	}
 
+	@Column(name="id_categoria")
+	@ManyToOne
+	@JoinColumn(name="categoria") // pode estar errado
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -65,20 +79,22 @@ public class Noticia {
 		this.categoria = categoria;
 	}
 
+	@Column(name="date_time_publicacao")
 	public Calendar getDateTimePublicacao() {
 		return dateTimePublicacao;
 	}
-
+	
 	public void setDateTimePublicacao(Calendar dateTimePublicacao) {
 		this.dateTimePublicacao = dateTimePublicacao;
 	}
 
-	public Calendar getDateTimeAtualização() {
-		return dateTimeAtualização;
+	@Column(name="date_time_atualizacao")
+	public Calendar getDateTimeAtualizacao() {
+		return dateTimeAtualizacao;
 	}
 
-	public void setDateTimeAtualização(Calendar dateTimeAtualização) {
-		this.dateTimeAtualização = dateTimeAtualização;
+	public void setDateTimeAtualizacao(Calendar dateTimeAtualizacao) {
+		this.dateTimeAtualizacao = dateTimeAtualizacao;
 	}
 
 	public String getAutor() {
@@ -105,5 +121,4 @@ public class Noticia {
 		this.status = status;
 	}
 
-	
 }
