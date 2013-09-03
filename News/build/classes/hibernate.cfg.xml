@@ -14,6 +14,7 @@
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
 		
-		<mapping class="com.betha.business.Pessoa" />
+		<mapping class="com.betha.business.Categoria" />
+		<mapping class="com.betha.business.Noticia" />
 	</session-factory>
 </hibernate-configuration>
