@@ -6,6 +6,7 @@ import java.util.Calendar;
  * @author Jaaziel Lopes
  * 
  * */
+
 public class Noticia {
 	private Integer id;
 	private String img;
