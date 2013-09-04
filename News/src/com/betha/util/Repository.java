@@ -5,7 +5,9 @@ package com.betha.util;
 
 import org.hibernate.Session;
 
+import com.betha.infra.CategoriaHibernate;
 import com.betha.infra.NoticiaHibernate;
+import com.betha.repository.Categorias;
 import com.betha.repository.Noticias;
 
 /**
@@ -22,4 +24,8 @@ public abstract class Repository {
 		return new NoticiaHibernate(session);
 	}
 	
+	public Categorias getCategorias(){
+		
+		return new CategoriaHibernate(session);
+	}
 }
