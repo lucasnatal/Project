@@ -69,9 +69,8 @@ public class Noticia {
 		this.descricao = descricao;
 	}
 
-	@Column(name="id_categoria")
 	@ManyToOne
-	@JoinColumn(name="categoria") // pode estar errado
+	@JoinColumn(name="id_categoria") // pode estar errado
 	public Categoria getCategoria() {
 		return categoria;
 	}
