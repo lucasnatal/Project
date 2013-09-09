@@ -1,0 +1,68 @@
+<ui:composition template="/templates/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:define name="content">
+	
+		<legend>Notícia</legend>
+		<h:form class="insert-form">
+
+			<div style="heigth: 400px; margin-top: 80px">
+				<fieldset>
+
+					<!-- Título -->
+					<div class="control-group">
+						<h:outputLabel class="control-label" value="Título" />
+						<div class="controls">
+							<h:inputText id="titulo" name="titulo" placeholder="título"
+								styleClass="input-xlarge" type="text" />
+						</div>
+					</div>
+					<!-- Autor -->
+					<div class="control-group">
+						<h:outputLabel class="control-label" value="Autor" />
+						<div class="controls">
+							<h:inputText id="autor" name="autor" placeholder="autor"
+								styleClass="input-xlarge" type="text" />
+						</div>
+					</div>
+
+					<!-- Categoria -->
+					<div class="control-group">
+						<h:outputLabel class="control-label" value="Categoria" />
+						<div class="controls">
+							<h:selectOneMenu id="categoria" name="categoria"
+								class="input-xlarge">
+								<f:selectItem itemValue="Notícias" />
+								<f:selectItem itemValue="Esportes" />
+								<f:selectItem itemValue="Entreternimento" />
+								<f:selectItem itemValue="Tecnologia" />
+							</h:selectOneMenu>
+						</div>
+					</div>
+
+					<!-- Descricao -->
+
+					<div class="control-group">
+						<h:outputLabel class="control-label" value="Descrição" />
+						<div class="controls">
+							<h:inputTextarea id="descricao" name="descricao" rows="10" cols="100"
+								value="escreva uma nova descrição" />
+						</div>
+					</div>
+
+					<!-- Button -->
+					<div class="control-group">
+						<label class="control-label"></label>
+						<div class="controls">
+							<button id="gravar" name="gravar" class="btn btn-primary">Gravar</button>
+						</div>
+					</div>
+
+				</fieldset>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
