@@ -33,7 +33,7 @@
 					<div class="control-group">
 						<h:outputLabel class="control-label" value="Categoria" />
 						<div class="controls">
-							<h:selectOneMenu id="categoria" name="categoria"  value="#{noticiaMB.categoriaSelecionada}" 
+							<h:selectOneMenu id="categoria" name="categoria"   value="#{noticiaMB.novaNoticia.categoria}" 
 								class="input-xlarge">
 								<f:selectItems value="#{noticiaMB.listaCategorias}"  var="cat" itemLabel="#{cat.nome}" itemValue="#{cat}" />
 							</h:selectOneMenu>

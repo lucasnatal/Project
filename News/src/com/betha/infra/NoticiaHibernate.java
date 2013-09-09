@@ -1,5 +1,6 @@
 package com.betha.infra;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -33,12 +34,10 @@ public class NoticiaHibernate implements Noticias {
 	@Override
 	public void inserir(Noticia noticia) {
 		
-		Date data = new Date();	
-		System.out.println(data);
-		
+		Calendar c = Calendar.getInstance();
 		noticia.setStatus(true);
-		//noticia.setDateTimePublicacao(dateTimePublicacao);
-		//noticia.setDateTimeAtualizacao(dateTimeAtualizacao);
+		noticia.setDateTimePublicacao(c);
+		noticia.setDateTimeAtualizacao(c);
 		this.session.persist(noticia);		
 	}
 

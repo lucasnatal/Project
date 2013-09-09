@@ -11,15 +11,16 @@ import com.betha.repository.Categorias;
 @FacesConverter(forClass=Categoria.class)
 public class CategoriaConverter implements Converter {
 
+	private Repository repo = new Repository();
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component,
 			String value) {
-		Categorias cat = Repository.getCategorias();
+		Categoria retorno = null;
 		if (value != null) {
-			Categoria categoria = cat.porCodigo(new Integer(value));
-			return categoria;
+			Categorias cat = repo.getCategorias();
+			retorno = cat.porCodigo(new Integer(value));
 		}
-		return null;
+		return retorno;
 	}
 
 	@Override
