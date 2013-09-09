@@ -14,6 +14,7 @@ public class NoticiaMB {
 	private Categorias categorias;
 
 	private Noticia novaNoticia;
+	private Categoria categoriaSelecionada;
 	
 	private List<Noticia> todasNoticias;
 	private List<Noticia> noticiasExibidas;
@@ -25,11 +26,20 @@ public class NoticiaMB {
 		this.categorias = (Categorias) Repository.getCategorias();
 		
 		this.novaNoticia = new Noticia();
+		this.categoriaSelecionada = new Categoria();
 		
 		this.todasNoticias = this.noticias.selecionar();
 		this.listaCategorias = this.categorias.selecionar();
 	}
 
+	public void gravar(){
+		
+		System.out.println(categoriaSelecionada.getNome());
+		novaNoticia.setCategoria(categoriaSelecionada);
+		this.noticias.inserir(novaNoticia);
+	}
+	
+	
 	public Noticia getNovaNoticia() {
 		return novaNoticia;
 	}
@@ -66,5 +76,15 @@ public class NoticiaMB {
 		this.noticiasExibidas = noticiasExibidas;
 	}
 
+	public Categoria getCategoriaSelecionada() {
+		return categoriaSelecionada;
+	}
 
+	public void setCategoriaSelecionada(Categoria categoriaSelecionada) {
+		this.categoriaSelecionada = categoriaSelecionada;
+	}
+
+
+	
+	
 }

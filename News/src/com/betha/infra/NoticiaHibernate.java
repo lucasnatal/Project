@@ -1,5 +1,6 @@
 package com.betha.infra;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -31,7 +32,13 @@ public class NoticiaHibernate implements Noticias {
 
 	@Override
 	public void inserir(Noticia noticia) {
-
+		
+		Date data = new Date();	
+		System.out.println(data);
+		
+		noticia.setStatus(true);
+		//noticia.setDateTimePublicacao(dateTimePublicacao);
+		//noticia.setDateTimeAtualizacao(dateTimeAtualizacao);
 		this.session.persist(noticia);		
 	}
 
