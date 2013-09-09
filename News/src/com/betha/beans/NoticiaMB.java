@@ -13,6 +13,8 @@ public class NoticiaMB {
 	private Noticias noticias;
 	private Categorias categorias;
 
+	private Noticia novaNoticia;
+	
 	private List<Noticia> todasNoticias;
 	private List<Noticia> noticiasExibidas;
 	private List<Categoria> listaCategorias;
@@ -22,8 +24,30 @@ public class NoticiaMB {
 		this.noticias = (Noticias) Repository.getNoticias();
 		this.categorias = (Categorias) Repository.getCategorias();
 		
+		this.novaNoticia = new Noticia();
+		
 		this.todasNoticias = this.noticias.selecionar();
 		this.listaCategorias = this.categorias.selecionar();
+	}
+
+	public Noticia getNovaNoticia() {
+		return novaNoticia;
+	}
+
+	public void setNovaNoticia(Noticia novaNoticia) {
+		this.novaNoticia = novaNoticia;
+	}
+
+	public Noticias getNoticias() {
+		return noticias;
+	}
+
+	public Categorias getCategorias() {
+		return categorias;
+	}
+
+	public List<Categoria> getListaCategorias() {
+		return listaCategorias;
 	}
 
 	public List<Noticia> getTodasNoticias() {
