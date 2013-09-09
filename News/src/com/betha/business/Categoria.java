@@ -19,6 +19,10 @@ private Integer id;
 private String nome;
 private Boolean status;
 
+public Categoria() {
+	// TODO Auto-generated constructor stub
+}
+
 public Categoria(Integer id, String nome, Boolean status) {
 	this.id = id;
 	this.nome = nome;

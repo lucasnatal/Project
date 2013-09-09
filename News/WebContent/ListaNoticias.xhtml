@@ -1,0 +1,28 @@
+<ui:composition template="/templates/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:define name="content">
+		<div style="heigth: 400px; margin-top: 50px">
+		
+	<h:form>
+		<h:dataTable styleClass="table" id="listaNoticias" value="#{noticiaMB.todasNoticias}"
+			var="noti" rendered="#{not empty noticiaMB.todasNoticias}" title="#{noti.descricao}">
+
+			<h:column>
+				<f:facet name="header">Título</f:facet>
+				<h:outputText value="#{noti.titulo}" title="#{noti.descricao}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Autor</f:facet>
+				<h:outputText value="#{noti.autor}" />
+			</h:column>
+			
+		</h:dataTable>
+	</h:form>
+	</div>
+	</ui:define>
+</ui:composition>

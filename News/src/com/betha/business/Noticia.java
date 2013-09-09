@@ -28,6 +28,10 @@ public class Noticia {
 	private String titulo;
 	private Boolean status;
 
+	public Noticia() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Noticia(Integer id, String img, String descricao,
 			Categoria categoria, Calendar dateTimePublicacao,
 			Calendar dateTimeAtualizacao, String autor, String titulo,
