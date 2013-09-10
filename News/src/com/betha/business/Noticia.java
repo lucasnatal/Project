@@ -74,7 +74,7 @@ public class Noticia {
 	}
 
 	@ManyToOne
-	@JoinColumn(name="id_categoria") // pode estar errado
+	@JoinColumn(name="id_categoria") 
 	public Categoria getCategoria() {
 		return categoria;
 	}
