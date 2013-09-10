@@ -32,9 +32,8 @@ public class NoticiaMB {
 	}
 
 	public void gravar(){
-		
-		
-		
+
+		this.noticias = repo.getNoticias();
 		this.noticias.inserir(novaNoticia);
 	}
 	
