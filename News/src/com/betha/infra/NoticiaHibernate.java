@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 import com.betha.business.Noticia;
 import com.betha.repository.Noticias;
@@ -60,6 +61,13 @@ public class NoticiaHibernate implements Noticias {
 
 		noticia.setStatus(true);
 		this.session.merge(noticia);		
+	}
+
+
+	@Override
+	public List<Noticia> selecionarUltimos(Integer last) {
+
+		return this.session.createCriteria(Noticia.class).setMaxResults(last).list();
 	}
 
 	
