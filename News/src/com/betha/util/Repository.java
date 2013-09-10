@@ -17,16 +17,19 @@ import com.betha.repository.Noticias;
  */
 public class Repository {
 
-	private Session session = (Session) new FacesUtil().getRequestAtribute("session");
-	
 	public Noticias getNoticias(){
 		
-		return new NoticiaHibernate(session);
+		return new NoticiaHibernate(this.getSession());
 	}
 	
 	public Categorias getCategorias(){
 		
-		return new CategoriaHibernate(session);
+		return new CategoriaHibernate(this.getSession());
+	}
+	
+	private Session getSession(){
+		
+		return  (Session) new FacesUtil().getRequestAtribute("session");
 	}
 	
 }

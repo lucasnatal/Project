@@ -1,0 +1,1 @@
+ALTER TABLE `news`.`noticias` CHANGE COLUMN `img` `img` VARCHAR(100) NULL  ;
