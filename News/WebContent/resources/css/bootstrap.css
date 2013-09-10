@@ -1120,6 +1120,8 @@ input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {
 
 .controls>.radio:first-child,.controls>.checkbox:first-child {
 	padding-top: 5px;
+
+	
 }
 
 .radio.inline,.checkbox.inline {
@@ -1127,6 +1129,11 @@ input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {
 	padding-top: 5px;
 	margin-bottom: 0;
 	vertical-align: middle;
+	
+
+}
+.radio.inline label {
+	width: 80px;
 }
 
 .radio.inline+.radio.inline,.checkbox.inline+.checkbox.inline {
