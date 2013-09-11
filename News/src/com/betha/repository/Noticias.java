@@ -5,6 +5,7 @@ package com.betha.repository;
 
 import java.util.List;
 
+import com.betha.business.Categoria;
 import com.betha.business.Noticia;
 
 /**
@@ -15,6 +16,7 @@ public interface Noticias {
 
 	public List<Noticia> selecionar();
 	public List<Noticia> selecionarUltimos(Integer last);
+	public List<Noticia> selecionarUltimos(Integer last, Categoria categoria);
 	public Noticia porCodigo(Integer id);
 	public void inserir(Noticia noticia);
 	public void atualizar(Noticia noticia);

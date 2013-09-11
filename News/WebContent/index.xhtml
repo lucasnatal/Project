@@ -26,48 +26,34 @@
 							</div>
 						</div> -->
 						<!-- CONTEUDO -->
-
-						<h:panelGrid columns="3">
-							<ul>
+						
+							<ul id="conteudo">
 								<ui:repeat var="news"
 									value="#{principalMB.listaNoticiasExibidas}">
-
-									<li class="span4">
-										
-										<div class="thumbnail" style="margin: 5px;height:400px;">
-											
-												<h:graphicImage width="300" height="200"
-													value="#{principalMB.CAMINHO_IMG.concat(news.img)}"  rendered="#{not empty news.img}"/>
-											
-											<h3>
-												
+									<li class="span4" style="margin-top: 18px; margin-left: 0px; margin-right:18px;">
+										<div class="thumbnail" style="height:400px;">
+											<h:graphicImage width="300" height="200"
+												value="#{principalMB.CAMINHO_IMG.concat(news.img)}"
+												rendered="#{not empty news.img}" />
+											<h4>
 												<h:outputText value="#{news.titulo}" escape="false" />
-												
-												<!-- Título Notícia Aqui -->
-											</h3>
-											<h6>Publicado por <h:outputText value="#{news.autor}"/>  </h6>
+											</h4>
+											<h6>
+												Publicado por
+												<h:outputText value="#{news.autor}" />
+											</h6>
 											<p>
-												<a class="btn btn-primary" href="#">Ler Mais</a> 
+												<a class="btn btn-primary" href="#">Ler Mais</a>
 											</p>
-
 										</div>
-									
 									</li>
-
-
-
 								</ui:repeat>
 							</ul>
-						</h:panelGrid>
+						
 					</div>
 
 				</div>
 			</div>
-
 		</div>
-
-
-
 	</ui:define>
-
 </ui:composition>
