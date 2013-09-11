@@ -29,7 +29,6 @@ public class NoticiaMB {
 	private Repository repo = new Repository();
 
 	public NoticiaMB() {
-		System.out.println("TESTEEEEEEEEEEEEEE Noticia Selecionada: "+this.noticiaSelecionada);
 		this.noticias = repo.getNoticias();
 		this.categorias = repo.getCategorias();
 
@@ -44,6 +43,7 @@ public class NoticiaMB {
 
 		this.noticias = repo.getNoticias();
 		this.noticias.inserir(novaNoticia);
+		this.novaNoticia = new Noticia();
 	}
 
 	public Noticia getNovaNoticia() {
