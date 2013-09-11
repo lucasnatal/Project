@@ -43,6 +43,10 @@ public class NoticiaMB {
 
 		this.noticias = repo.getNoticias();
 		this.noticias.inserir(novaNoticia);
+		
+		// Necessário no escopo session para atualizar a lista de edição.
+		this.todasNoticias.add(novaNoticia);
+		
 		this.novaNoticia = new Noticia();
 	}
 
