@@ -10,12 +10,13 @@ import com.betha.business.Categoria;
 import com.betha.business.Noticia;
 import com.betha.repository.Categorias;
 import com.betha.repository.Noticias;
+import com.betha.util.FacesUtil;
 import com.betha.util.Repository;
 
 public class NoticiaMB {
 	private Noticias noticias;
 	private Categorias categorias;
-	private Noticia noticiaSelecionada;	
+	private Noticia noticiaSelecionada;
 
 	private Noticia novaNoticia;
 
@@ -23,16 +24,20 @@ public class NoticiaMB {
 	private List<Noticia> todasNoticias;
 	private List<Noticia> noticiasExibidas;
 	private List<Categoria> listaCategorias;
+
+	private FacesUtil facesUtil;
 	private Repository repo = new Repository();
 
 	public NoticiaMB() {
+		System.out.println("TESTEEEEEEEEEEEEEE Noticia Selecionada: "+this.noticiaSelecionada);
 		this.noticias = repo.getNoticias();
 		this.categorias = repo.getCategorias();
 
 		this.novaNoticia = new Noticia();
-
 		this.todasNoticias = this.noticias.selecionar();
 		this.listaCategorias = this.categorias.selecionar();
+
+		this.facesUtil = new FacesUtil();
 	}
 
 	public void gravar() {
@@ -86,13 +91,29 @@ public class NoticiaMB {
 			}
 		}
 	}
-	
-	public void atualizar(){
-	noticias = repo.getNoticias();
-	noticias.atualizar(noticiaSelecionada);
+
+	public void atualizar() {
+
+			try {
+				noticias = repo.getNoticias();
+				noticias.atualizar(noticiaSelecionada);
+				facesUtil.adicionarMensagem(FacesMessage.SEVERITY_INFO,
+						"Cadastro alterado com sucesso!");
+			} catch (Exception e) {
+				e.printStackTrace();
+				facesUtil.adicionarMensagem(FacesMessage.SEVERITY_ERROR,
+						"Não foi possível alterar!");
+			}
+
 	}
-	public String redirecionar() {
+
+	public String redirecionaEditarNoticia() {
 		return "EditarNoticia?faces-redirect=true";
+	}
+
+	public String redirecionaListaNoticias() {
+		;
+		return "ListaNoticias?faces-redirect=true";
 	}
 
 	public Noticia getNoticiaSelecionada() {
@@ -102,7 +123,7 @@ public class NoticiaMB {
 	public void setNoticiaSelecionada(Noticia noticiaSelecionada) {
 		this.noticiaSelecionada = noticiaSelecionada;
 	}
-	
+
 	public String getFiltro() {
 		return filtro;
 	}
@@ -110,6 +131,5 @@ public class NoticiaMB {
 	public void setFiltro(String filtro) {
 		this.filtro = filtro;
 	}
-	
-	
+
 }
