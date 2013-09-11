@@ -18,6 +18,7 @@ public class Categoria {
 	private Integer id;
 	private String nome;
 	private Boolean status;
+	private String color;
 
 	public Categoria() {
 		// TODO Auto-generated constructor stub
@@ -62,6 +63,15 @@ public class Categoria {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
+	
+	public String getColor() {
+		return color;
+	}
+
+
+	public void setColor(String color) {
+		this.color = color;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -79,4 +89,7 @@ public class Categoria {
 			return false;
 		return true;
 	}
+
+
+
 }

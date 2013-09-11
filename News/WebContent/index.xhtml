@@ -41,7 +41,7 @@
 												value="#{principalMB.CAMINHO_IMG.concat(news.img)}"
 												rendered="#{not empty news.img}" />
 											<h4>
-												<h:outputText value="#{news.titulo}" escape="false" />
+												<h:outputText style="color:#{news.categoria.color}" value="#{news.titulo}" escape="false" />
 											</h4>
 											<h6>
 												Publicado por

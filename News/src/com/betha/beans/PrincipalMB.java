@@ -42,7 +42,6 @@ public class PrincipalMB {
 		
 		this.noticias = repo.getNoticias();
 		this.listaNoticiasExibidas = this.noticias.selecionarUltimos(last, categoria);
-		System.out.println(listaNoticiasExibidas.size());
 	}
 	
 	public List<Noticia> getListaNoticias() {

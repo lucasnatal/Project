@@ -28,6 +28,7 @@ public class Noticia {
 	private String titulo;
 	private Boolean status;
 
+
 	public Noticia() {
 		// TODO Auto-generated constructor stub
 	}
@@ -124,5 +125,6 @@ public class Noticia {
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
+
 
 }
