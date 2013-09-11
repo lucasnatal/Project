@@ -17,7 +17,6 @@ import com.betha.util.Repository;
  */
 public class PrincipalMB {
 
-	private List<Noticia> listaNoticias;
 	private List<Noticia> listaNoticiasExibidas;
 	private List<Categoria> listaCategorias;
 	
@@ -32,7 +31,6 @@ public class PrincipalMB {
 		this.noticias = repo.getNoticias();
 		this.categorias = repo.getCategorias();
 		
-		this.listaNoticias = this.noticias.selecionar();
 		this.listaNoticiasExibidas = this.noticias.selecionarUltimos(new Integer(9));
 		this.setListaCategorias(this.categorias.selecionar());
 		
@@ -44,9 +42,6 @@ public class PrincipalMB {
 		this.listaNoticiasExibidas = this.noticias.selecionarUltimos(last, categoria);
 	}
 	
-	public List<Noticia> getListaNoticias() {
-		return listaNoticias;
-	}
 
 	public List<Noticia> getListaNoticiasExibidas() {
 		return listaNoticiasExibidas;
