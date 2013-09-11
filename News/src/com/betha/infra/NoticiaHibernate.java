@@ -68,14 +68,14 @@ public class NoticiaHibernate implements Noticias {
 	@Override
 	public List<Noticia> selecionarUltimos(Integer last) {
 
-		return this.session.createCriteria(Noticia.class).setMaxResults(last).addOrder(Order.desc("id")).list();
+		return this.session.createCriteria(Noticia.class).setMaxResults(last).add(Restrictions.eq("status", true)).addOrder(Order.desc("id")).list();
 	}
 
 
 	@Override
 	public List<Noticia> selecionarUltimos(Integer last, Categoria categoria) {
 		
-		return this.session.createCriteria(Noticia.class).setMaxResults(last).add(Restrictions.eq("categoria", categoria)).addOrder(Order.desc("id")).list();
+		return this.session.createCriteria(Noticia.class).setMaxResults(last).add(Restrictions.eq("categoria", categoria)).add(Restrictions.eq("status", true)).addOrder(Order.desc("id")).list();
 	}
 
 	
