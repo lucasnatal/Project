@@ -21,6 +21,8 @@ public class PrincipalMB {
 	private Repository repo = new Repository();
 	private Noticias noticias;
 	
+	private final String CAMINHO_IMG = "/resources/img/noticias/";
+	
 	public PrincipalMB() {
 
 		this.noticias = repo.getNoticias();
@@ -29,13 +31,20 @@ public class PrincipalMB {
 
 	}
 	
-
+	public void teste(){
+		
+	}
+	
 	public List<Noticia> getListaNoticias() {
 		return listaNoticias;
 	}
 
 	public List<Noticia> getListaNoticiasExibidas() {
 		return listaNoticiasExibidas;
+	}
+
+	public String getCAMINHO_IMG() {
+		return CAMINHO_IMG;
 	}
 	
 	

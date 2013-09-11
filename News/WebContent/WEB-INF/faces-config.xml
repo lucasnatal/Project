@@ -12,7 +12,7 @@
 	<managed-bean>
 		<managed-bean-name>principalMB</managed-bean-name>
 		<managed-bean-class>com.betha.beans.PrincipalMB</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
+		<managed-bean-scope>view</managed-bean-scope>
 	</managed-bean>
 
 	<navigation-rule>

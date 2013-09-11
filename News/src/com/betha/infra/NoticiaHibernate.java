@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 import com.betha.business.Noticia;
@@ -66,7 +67,7 @@ public class NoticiaHibernate implements Noticias {
 	@Override
 	public List<Noticia> selecionarUltimos(Integer last) {
 
-		return this.session.createCriteria(Noticia.class).setMaxResults(last).list();
+		return this.session.createCriteria(Noticia.class).setMaxResults(last).addOrder(Order.desc("id")).list();
 	}
 
 	
