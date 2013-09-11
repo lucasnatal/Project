@@ -22,10 +22,20 @@ public class PrincipalMB {
 	private Noticias noticias;
 	
 	public PrincipalMB() {
-		
+
 		this.noticias = repo.getNoticias();
 		this.listaNoticias = this.noticias.selecionar();
 		this.listaNoticiasExibidas = this.noticias.selecionarUltimos(new Integer(9));
+
+	}
+	
+
+	public List<Noticia> getListaNoticias() {
+		return listaNoticias;
+	}
+
+	public List<Noticia> getListaNoticiasExibidas() {
+		return listaNoticiasExibidas;
 	}
 	
 	
