@@ -43,8 +43,7 @@ public class NoticiaHibernate implements Noticias {
 	}
 
 	@Override
-	public void atualizar(Noticia noticia) {
-		
+	public void atualizar(Noticia noticia) {		
 		this.session.merge(noticia);
 	}
 
