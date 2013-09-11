@@ -1,0 +1,59 @@
+<ui:composition template="/templates/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:define name="content">
+
+		<div class="container"  style="heigth: 400px; margin-top: 100px" >
+			
+
+				<h:form>
+					<div class="search-bar">
+						<h:panelGrid columns="2">
+							<h:outputLabel class="" value="Pesquisar" />
+							<h:inputText id="campo-busca" styleClass="campo-busca"
+								value="#{noticiaMB.filtro}">
+								<f:ajax event="keyup" listener="#{noticiaMB.consultar}"
+									render="listaNoticias" />
+							</h:inputText>
+						</h:panelGrid>
+					</div>
+
+					<h:dataTable styleClass="table" id="listaNoticias"
+						value="#{not empty noticiaMB.filtro?noticiaMB.noticiasExibidas:noticiaMB.todasNoticias}"
+						var="noti" rendered="#{not empty noticiaMB.todasNoticias}"
+						title="#{noti.descricao}">
+
+						<h:column>
+							<f:facet name="header">Título</f:facet>
+							<h:outputText id="campo-titulo" value="#{noti.titulo}"
+								title="#{noti.descricao}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Autor</f:facet>
+							<h:outputText id="campo-autor" value="#{noti.autor}" />
+						</h:column>
+
+
+						<h:column>
+							<f:facet name="header">Categoria</f:facet>
+							<h:outputText value="#{noti.categoria.nome}" />
+						</h:column>
+
+						<h:column headerClass="edit-column">
+							<f:facet name="header">Editar</f:facet>
+							<h:commandButton image="#{'resources/img/editar.png'}"
+								title="Editar" action="#{noticiaMB.redirecionaEditarNoticia}">
+								<f:setPropertyActionListener
+									target="#{noticiaMB.noticiaSelecionada}" value="#{noti}" />
+							</h:commandButton>
+						</h:column>
+
+					</h:dataTable>
+				</h:form>
+		</div>
+	</ui:define>
+</ui:composition>

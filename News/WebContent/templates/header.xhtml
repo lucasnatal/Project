@@ -2,48 +2,39 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-	
-<!-- HEADER -->
+
+	<!-- HEADER -->
 	<div class="navbar transparent navbar-inverse navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<a class="btn btn-navbar" data-target=".nav-collapse"
-					data-toggle="collapse"><span class="icon-bar"></span><span
-					class="icon-bar"></span><span class="icon-bar"></span></a><a
-					class="brand" href="Erro404.xhtml"><strong> Index News
-				</strong></a>
-				<div class="nav-collapse collapse">
-					<ul class="nav pull-right">
-						<li><a class="active" href="Erro404.xhtml"> HOME </a></li>
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#"> Esportes <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="Erro404.xhtml"> Brasileirão A</a></li>
-								<li><a href="Erro404.xhtml"> Brasileirão B </a></li>
-								<li><a href="Erro404.xhtml"> Vôlei </a></li>
-								<li><a href="Erro404.xhtml"> Basketbol </a></li>
-								<li><a href="Erro404.xhtml"> Coming Soon </a></li>
-								<li><a href="Erro404.xhtml"> Automobilismo </a></li>
-								<li><a href="Erro404.xhtml"> Esportes Radicais</a></li>
-								<li><a href="Erro404.xhtml"> Esportes Aquaticos </a></li>
-							</ul></li>
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#"> Tecnologia <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="Erro404.xhtml"> Games </a></li>
-								<li><a href="Erro404.xhtml"> Mobile </a></li>
-								<li><a href="Erro404.xhtml"> Conferências </a></li>
-								<li><a href="Erro404.xhtml"> Desktop </a></li>
-								<li><a href="Erro404.xhtml"> Internet </a></li>
-							</ul></li>
-						<li><a href="Erro404.xhtml"> Mundo </a></li>
-						<li><a href="Erro404.xhtml"> Brasil </a></li>
-						<li><a href="Erro404.xhtml"> Entretenimento </a></li>
-						<li><a class="btn-header" href="Erro404.xhtml"> Sign up </a></li>
-						<li><a class="btn-header" href="Erro404.xhtml"> Sign in </a></li>
-					</ul>
-				</div>
+		<div class="navbar-inner" style="height: 60px;">
+			<div class="container" style="padding-top: 10px;">
+				<ul class="nav pull-left">
+
+					<a class="brand" href="index.xhtml"><strong>
+							NEWSLabs.com </strong></a>
+					<li><a class="active" href="index.xhtml"> HOME </a></li>
+					<h:form>
+						<ui:repeat var="cat" value="#{principalMB.listaCategorias}">
+							<li><h:commandLink value="#{cat.nome}"
+									onblur="value=value.toUpperCase()">
+									<f:ajax render="@form" event="click"
+										listener="#{principalMB.filtrarPorCategoria(9, cat)}" execute="@form"/>
+								</h:commandLink></li>
+
+						</ui:repeat>
+					</h:form>
+					<!-- <li><a href="Erro404.xhtml">NOTICIAS</a></li>
+					<li><a class="warning" href="Erro404.xhtml"> ESPORTES </a></li>
+					<li><a href="Erro404.xhtml"> TECNOLOGIA </a></li>
+					<li><a href="Erro404.xhtml"> ENTRETENIMENTO </a></li> -->
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#"> OPCOES <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="noticia.xhtml"> Cadastrar </a></li>
+							<li><a href="ListaNoticias.xhtml"> Todas </a></li>
+						</ul></li>
+				</ul>
 			</div>
 		</div>
 	</div>
+
 </ui:composition>

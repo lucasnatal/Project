@@ -11,7 +11,7 @@ public class FacesUtil {
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage(tipo, msg, msg));
 	}
-	public static Object getRequestAtribute(String nome) {
+	public Object getRequestAtribute(String nome) {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		ExternalContext externalContext = facesContext.getExternalContext();
 		HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();

@@ -5,28 +5,33 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 	<ui:define name="content">
-		<h:form class="form-horizontal">
+		<h:form class="form-horizontal" value="altera-noticia">
 
-			<div style="heigth: 400px; margin-top: 80px">
+			<div class="container" style="heigth: 400px; margin-top: 100px">
 				<fieldset>
 
-			<h2>	Alterando Notícia <BR /><BR /></h2>
-				
-						
+					<h2>
+						Alterando Notícia <BR /> <BR />
+					</h2>
+
+
 					<!-- Título -->
 					<div class="control-group">
 						<h:outputLabel class="control-label" value="Título" />
 						<div class="controls">
 							<h:inputText id="titulo" name="titulo" placeholder="título"
-								styleClass="input-xlarge" type="text" />
+								styleClass="input-xlarge" type="text"
+								value="#{noticiaMB.noticiaSelecionada.titulo}" />
 						</div>
 					</div>
+
 					<!-- Autor -->
 					<div class="control-group">
 						<h:outputLabel class="control-label" value="Autor" />
 						<div class="controls">
 							<h:inputText id="autor" name="autor" placeholder="autor"
-								styleClass="input-xlarge" type="text" />
+								styleClass="input-xlarge" type="text"
+								value="#{noticiaMB.noticiaSelecionada.autor}" />
 						</div>
 					</div>
 
@@ -35,11 +40,10 @@
 						<h:outputLabel class="control-label" value="Categoria" />
 						<div class="controls">
 							<h:selectOneMenu id="categoria" name="categoria"
+								value="#{noticiaMB.noticiaSelecionada.categoria}"
 								class="input-xlarge">
-								<f:selectItem itemValue="Notícias" />
-								<f:selectItem itemValue="Esportes" />
-								<f:selectItem itemValue="Entreternimento" />
-								<f:selectItem itemValue="Tecnologia" />
+								<f:selectItems value="#{noticiaMB.listaCategorias}" var="cat"
+									itemLabel="#{cat.nome}" itemValue="#{cat}" />
 							</h:selectOneMenu>
 						</div>
 					</div>
@@ -49,31 +53,46 @@
 					<div class="control-group">
 						<label class="control-label">Status</label>
 						<div class="controls">
-							<label class="radio inline"> <input name="status"
-								value="Ativa" checked="checked" type="radio" /> Ativa
-							</label> <label class="radio inline"> <input name="status"
-								value="Inativa" type="radio" /> Inativa
-							</label>
+							<h:selectOneRadio style="left: 50px" styleClass="radio inline"
+								id="radio_status" value="#{noticiaMB.noticiaSelecionada.status}">
+								<f:selectItem itemLabel="Ativo" itemValue="true" />
+								<f:selectItem itemLabel="Inativo" itemValue="false" />
+							</h:selectOneRadio>
 						</div>
 					</div>
 
-					<!-- Descricao -->
+					<!-- Descrição -->
 
 					<div class="control-group">
 						<h:outputLabel class="control-label" value="Descrição" />
 						<div class="controls">
 							<h:inputTextarea id="descricao" name="descricao"
-								value="escreva uma nova descrição" />
+								value="#{noticiaMB.noticiaSelecionada.descricao}" />
 						</div>
 					</div>
 
-					<!-- Button -->
+					<!-- Botão Editar -->
 					<div class="control-group">
-						<label class="control-label"></label>
 						<div class="controls">
-							<button id="editar" name="editar" class="btn btn-primary">Editar</button>
+							<h:commandButton class="btn btn-primary" title="Editar"
+								value="Editar" action="#{noticiaMB.atualizar}"
+								disabled="#{empty noticiaMB.noticiaSelecionada}" />
+							<h:commandButton style="margin:10px" class="btn btn-primary"
+								title="Voltar" immediate="true" value="Voltar"
+								action="#{noticiaMB.redirecionaListaNoticias}" />
 						</div>
 					</div>
+
+					<h5>
+						<h:outputText  styleClass="alert alert-error"
+							rendered="#{empty noticiaMB.noticiaSelecionada}"
+							value="• Nenhuma notícia selecionada!" />
+					</h5>
+
+					<h5>
+						<h:messages style="margin: 20px 0px 15px 0px; padding-left: 40px"
+							styleClass="alert alert-success" infoClass="check-info" />
+					</h5>
 
 				</fieldset>
 			</div>
