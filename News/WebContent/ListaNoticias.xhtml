@@ -12,7 +12,7 @@
 				<h:form>
 					<div class="search-bar">
 						<h:panelGrid columns="2">
-							<h:outputLabel class="title" value="Pesquisar" />
+							<h:outputLabel class="" value="Pesquisar" />
 							<h:inputText id="campo-busca" styleClass="campo-busca"
 								value="#{noticiaMB.filtro}">
 								<f:ajax event="keyup" listener="#{noticiaMB.consultar}"
@@ -46,7 +46,7 @@
 						<h:column headerClass="edit-column">
 							<f:facet name="header">Editar</f:facet>
 							<h:commandButton image="#{'resources/img/editar.png'}"
-								title="Editar" action="#{noticiaMB.redirecionar}">
+								title="Editar" action="#{noticiaMB.redirecionaEditarNoticia}">
 								<f:setPropertyActionListener
 									target="#{noticiaMB.noticiaSelecionada}" value="#{noti}" />
 							</h:commandButton>

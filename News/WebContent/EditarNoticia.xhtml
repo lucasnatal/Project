@@ -61,7 +61,7 @@
 						</div>
 					</div>
 
-					<!-- Descricao -->
+					<!-- Descrição -->
 
 					<div class="control-group">
 						<h:outputLabel class="control-label" value="Descrição" />
@@ -71,13 +71,29 @@
 						</div>
 					</div>
 
-					<!-- Button -->
-					<label class="control-label"></label>
-					<h:commandButton
-						title="Editar" value="Editar" action="#{noticiaMB.atualizar}">
-					</h:commandButton>
-					
-					
+					<!-- Botão Editar -->
+					<div class="control-group">
+						<div class="controls">
+							<h:commandButton class="btn btn-primary" title="Editar"
+								value="Editar" action="#{noticiaMB.atualizar}"
+								disabled="#{empty noticiaMB.noticiaSelecionada}" />
+							<h:commandButton style="margin:10px" class="btn btn-primary"
+								title="Voltar" immediate="true" value="Voltar"
+								action="#{noticiaMB.redirecionaListaNoticias}" />
+						</div>
+					</div>
+
+					<h5>
+						<h:outputText  styleClass="alert alert-error"
+							rendered="#{empty noticiaMB.noticiaSelecionada}"
+							value="• Nenhuma notícia selecionada!" />
+					</h5>
+
+					<h5>
+						<h:messages style="margin: 20px 0px 15px 0px; padding-left: 40px"
+							styleClass="alert alert-success" infoClass="check-info" />
+					</h5>
+
 				</fieldset>
 			</div>
 		</h:form>
