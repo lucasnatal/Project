@@ -38,12 +38,8 @@ public class PrincipalMB {
 		
 	}
 	
-	public void teste(){
-		
-	}
-	
 	public void filtrarPorCategoria(Integer last, Categoria categoria){
-		System.out.println(categoria.getNome());
+		
 		this.noticias = repo.getNoticias();
 		this.listaNoticiasExibidas = this.noticias.selecionarUltimos(last, categoria);
 		System.out.println(listaNoticiasExibidas.size());

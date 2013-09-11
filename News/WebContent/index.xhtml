@@ -13,25 +13,30 @@
 			<div class="container-fluid">
 				<div class="row-fluid">
 					<div class="span12">
-						<!-- 
-						<div class="row-fluid">
-							<div class="span12">
-								<div class="hero-unit">
-									<h1>Merchandising</h1>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-										quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-										condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-									<a href="#" class="btn btn-large btn-success">Get Started</a>
+						<h:form>
+							<div class="row-fluid">
+								<div class="span12">
+									<div class="hero-unit">
+										<ui:repeat var="cat" value="#{principalMB.listaCategorias}">
+											<li>
+												<h:commandLink value="#{cat.nome}">
+													<f:ajax render="@form" event="click"
+														listener="#{principalMB.filtrarPorCategoria(9, cat)}"
+														execute="@form" />
+												</h:commandLink>
+											</li>
+										</ui:repeat>
+									</div>
 								</div>
 							</div>
-						</div> -->
-						<!-- CONTEUDO -->
-						
+
+
 							<ul id="conteudo">
 								<ui:repeat var="news"
 									value="#{principalMB.listaNoticiasExibidas}">
-									<li class="span4" style="margin-top: 18px; margin-left: 0px; margin-right:18px;">
-										<div class="thumbnail" style="height:400px;">
+									<li class="span4"
+										style="margin-top: 18px; margin-left: 0px; margin-right: 18px;">
+										<div class="thumbnail" style="height: 400px;">
 											<h:graphicImage width="300" height="200"
 												value="#{principalMB.CAMINHO_IMG.concat(news.img)}"
 												rendered="#{not empty news.img}" />
@@ -49,7 +54,7 @@
 									</li>
 								</ui:repeat>
 							</ul>
-						
+						</h:form>
 					</div>
 
 				</div>

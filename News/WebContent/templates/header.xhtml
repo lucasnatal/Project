@@ -12,16 +12,7 @@
 					<a class="brand" href="index.xhtml"><strong>
 							NEWSLabs.com </strong></a>
 					<li><a class="active" href="index.xhtml"> HOME </a></li>
-					<h:form>
-						<ui:repeat var="cat" value="#{principalMB.listaCategorias}">
-							<li><h:commandLink value="#{cat.nome}"
-									onblur="value=value.toUpperCase()">
-									<f:ajax render="@form" event="click"
-										listener="#{principalMB.filtrarPorCategoria(9, cat)}" execute="@form"/>
-								</h:commandLink></li>
 
-						</ui:repeat>
-					</h:form>
 					<!-- <li><a href="Erro404.xhtml">NOTICIAS</a></li>
 					<li><a class="warning" href="Erro404.xhtml"> ESPORTES </a></li>
 					<li><a href="Erro404.xhtml"> TECNOLOGIA </a></li>
