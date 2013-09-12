@@ -9,22 +9,26 @@
 	<ui:define name="content">
 
 		<!-- CONTEÚDO INDEX -->
-		<div style="heigth: 400px; margin-top: 90px">
+		<div style="min-height:600px; margin-top: 90px">
 			<div class="container-fluid">
 				<div class="container">
 					<h:form>
-						<div>
+						<div style="min-height:80%">
 							<!-- Título -->
 
 							<h:outputLabel style="font-size: 22px;"
 								value="#{noticiaMB.noticiaSelecionada.titulo}" />
 							<br />
+
+							<h:graphicImage
+								value="#{noticiaMB.CAMINHO_IMG.concat(noticiaMB.noticiaSelecionada.img)}"
+								width="300" height="200" rendered="#{not empty noticiaMB.noticiaSelecionada.img}"/>
+							<br /><BR />
 						</div>
-						
+
 						<!-- Conteúdo -->
 						<div>
-							<h:outputText
-								value="#{noticiaMB.noticiaSelecionada.descricao}"
+							<h:outputText value="#{noticiaMB.noticiaSelecionada.descricao}"
 								escape="false" />
 						</div>
 					</h:form>

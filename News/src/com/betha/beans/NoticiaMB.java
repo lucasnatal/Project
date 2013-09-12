@@ -28,6 +28,8 @@ public class NoticiaMB {
 	private FacesUtil facesUtil;
 	private Repository repo = new Repository();
 
+	private final String CAMINHO_IMG = "/resources/img/noticias/";
+	
 	public NoticiaMB() {
 		this.noticias = repo.getNoticias();
 		this.categorias = repo.getCategorias();
@@ -137,6 +139,10 @@ public class NoticiaMB {
 
 	public void setFiltro(String filtro) {
 		this.filtro = filtro;
+	}
+
+	public String getCAMINHO_IMG() {
+		return CAMINHO_IMG;
 	}
 
 }

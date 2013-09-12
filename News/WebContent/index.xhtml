@@ -19,7 +19,8 @@
 									<div class="hero-unit">
 										<ul class="nav nav-pills">
 											<ui:repeat var="cat" value="#{principalMB.listaCategorias}">
-												<li style="font-size: 22px"><h:commandLink
+												<li style="font-size: 22px">
+													<h:commandLink style="color:#{cat.color};"
 														value="#{cat.nome}">
 														<f:ajax render="@form" event="click"
 															listener="#{principalMB.filtrarPorCategoria(9, cat)}"
