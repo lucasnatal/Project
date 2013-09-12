@@ -17,20 +17,19 @@
 							<div class="row-fluid">
 								<div class="span12">
 									<div class="hero-unit">
-										<ui:repeat var="cat" value="#{principalMB.listaCategorias}">
-											<li>
-												<h:commandLink value="#{cat.nome}">
-													<f:ajax render="@form" event="click"
-														listener="#{principalMB.filtrarPorCategoria(9, cat)}"
-														execute="@form" />
-												</h:commandLink>
-											</li>
-										</ui:repeat>
+										<ul class="nav nav-pills">
+											<ui:repeat var="cat" value="#{principalMB.listaCategorias}">
+												<li style="font-size: 22px"><h:commandLink
+														value="#{cat.nome}">
+														<f:ajax render="@form" event="click"
+															listener="#{principalMB.filtrarPorCategoria(9, cat)}"
+															execute="@form" />
+													</h:commandLink></li>
+											</ui:repeat>
+										</ul>
 									</div>
 								</div>
 							</div>
-
-
 							<ul id="conteudo">
 								<ui:repeat var="news"
 									value="#{principalMB.listaNoticiasExibidas}">
@@ -41,14 +40,21 @@
 												value="#{principalMB.CAMINHO_IMG.concat(news.img)}"
 												rendered="#{not empty news.img}" />
 											<h4>
-												<h:outputText style="color:#{news.categoria.color}" value="#{news.titulo}" escape="false" />
+												<h:outputText style="color:#{news.categoria.color}"
+													value="#{news.titulo}" escape="false" />
 											</h4>
 											<h6>
 												Publicado por
 												<h:outputText value="#{news.autor}" />
 											</h6>
 											<p>
-												<a class="btn btn-primary" href="#">Ler Mais</a>
+												<h:commandButton title="Ler mais" value="Ler mais"
+													class="btn btn-primary"
+													action="#{noticiaMB.redirecionaExibeNoticia}">
+													<f:setPropertyActionListener
+														target="#{noticiaMB.noticiaSelecionada}"
+														value="#{news}" />
+												</h:commandButton>
 											</p>
 										</div>
 									</li>

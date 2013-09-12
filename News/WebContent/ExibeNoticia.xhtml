@@ -1,0 +1,36 @@
+<ui:composition template="/templates/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="title">O seu portal de noticias do Betha Labs</ui:define>
+
+	<ui:define name="content">
+
+		<!-- CONTEÚDO INDEX -->
+		<div style="heigth: 400px; margin-top: 90px">
+			<div class="container-fluid">
+				<div class="container">
+					<h:form>
+						<div>
+							<!-- Título -->
+
+							<h:outputLabel style="font-size: 22px;"
+								value="#{noticiaMB.noticiaSelecionada.titulo}" />
+							<br />
+						</div>
+						
+						<!-- Conteúdo -->
+						<div>
+							<h:outputText
+								value="#{noticiaMB.noticiaSelecionada.descricao}"
+								escape="false" />
+						</div>
+					</h:form>
+				</div>
+			</div>
+		</div>
+
+	</ui:define>
+</ui:composition>

@@ -43,10 +43,10 @@ public class NoticiaMB {
 
 		this.noticias = repo.getNoticias();
 		this.noticias.inserir(novaNoticia);
-		
+
 		// Necessário no escopo session para atualizar a lista de edição.
 		this.todasNoticias.add(novaNoticia);
-		
+
 		this.novaNoticia = new Noticia();
 	}
 
@@ -98,16 +98,16 @@ public class NoticiaMB {
 
 	public void atualizar() {
 
-			try {
-				noticias = repo.getNoticias();
-				noticias.atualizar(noticiaSelecionada);
-				facesUtil.adicionarMensagem(FacesMessage.SEVERITY_INFO,
-						"Cadastro alterado com sucesso!");
-			} catch (Exception e) {
-				e.printStackTrace();
-				facesUtil.adicionarMensagem(FacesMessage.SEVERITY_ERROR,
-						"Não foi possível alterar!");
-			}
+		try {
+			noticias = repo.getNoticias();
+			noticias.atualizar(noticiaSelecionada);
+			facesUtil.adicionarMensagem(FacesMessage.SEVERITY_INFO,
+					"Cadastro alterado com sucesso!");
+		} catch (Exception e) {
+			e.printStackTrace();
+			facesUtil.adicionarMensagem(FacesMessage.SEVERITY_ERROR,
+					"Não foi possível alterar!");
+		}
 
 	}
 
@@ -116,8 +116,11 @@ public class NoticiaMB {
 	}
 
 	public String redirecionaListaNoticias() {
-		;
 		return "ListaNoticias?faces-redirect=true";
+	}
+
+	public String redirecionaExibeNoticia() {
+		return "ExibeNoticia?faces-redirect=true";
 	}
 
 	public Noticia getNoticiaSelecionada() {
