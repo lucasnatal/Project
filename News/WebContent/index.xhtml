@@ -19,9 +19,8 @@
 									<div class="hero-unit">
 										<ul class="nav nav-pills">
 											<ui:repeat var="cat" value="#{principalMB.listaCategorias}">
-												<li style="font-size: 22px">
-													<h:commandLink style="color:#{cat.color};"
-														value="#{cat.nome}">
+												<li style="font-size: 22px"><h:commandLink
+														style="color:#{cat.color};" value="#{cat.nome}">
 														<f:ajax render="@form" event="click"
 															listener="#{principalMB.filtrarPorCategoria(9, cat)}"
 															execute="@form" />
@@ -49,12 +48,10 @@
 												<h:outputText value="#{news.autor}" />
 											</h6>
 											<p>
-												<h:commandButton title="Ler mais" value="Ler mais"
+
+												<h:commandButton title="Leia Mais" value="Leia Mais"
 													class="btn btn-primary"
-													action="#{noticiaMB.redirecionaExibeNoticia}">
-													<f:setPropertyActionListener
-														target="#{noticiaMB.noticiaSelecionada}"
-														value="#{news}" />
+													action="#{noticiaMB.redirecionaExibeNoticia(news)}">
 												</h:commandButton>
 											</p>
 										</div>

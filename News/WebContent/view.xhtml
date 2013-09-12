@@ -7,7 +7,7 @@
 	<ui:define name="title">O seu portal de noticias do Betha Labs</ui:define>
 
 	<ui:define name="content">
-
+		<f:event listener="#{noticiaMB.setNoticiaById(request.getParameter('noticia'))}" type="preRenderView"/>
 		<!-- CONTEÚDO INDEX -->
 		<div style="min-height:600px; margin-top: 90px">
 			<div class="container-fluid">

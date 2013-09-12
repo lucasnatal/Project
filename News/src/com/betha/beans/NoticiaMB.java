@@ -6,6 +6,8 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
+import org.hibernate.Session;
+
 import com.betha.business.Categoria;
 import com.betha.business.Noticia;
 import com.betha.repository.Categorias;
@@ -121,8 +123,8 @@ public class NoticiaMB {
 		return "ListaNoticias?faces-redirect=true";
 	}
 
-	public String redirecionaExibeNoticia() {
-		return "ExibeNoticia?faces-redirect=true";
+	public String redirecionaExibeNoticia(Noticia noticia) {
+		return "view?faces-redirect=true&noticia="+noticia.getId();
 	}
 
 	public Noticia getNoticiaSelecionada() {
@@ -143,6 +145,12 @@ public class NoticiaMB {
 
 	public String getCAMINHO_IMG() {
 		return CAMINHO_IMG;
+	}
+	
+	public void setNoticiaById(Integer id){
+
+		this.noticias = repo.getNoticias();
+		this.noticiaSelecionada = this.noticias.porCodigo(id);
 	}
 
 }
