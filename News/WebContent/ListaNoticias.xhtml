@@ -8,54 +8,59 @@
 
 	<ui:define name="content">
 
-		<div class="container"  style="heigth: 400px; margin-top: 100px" >
-			
+		<div class="container" style="heigth: 400px; margin-top: 100px">
 
-				<h:form>
-					<div class="search-bar">
+			<h:form>
+				<div class="search-bar"
+					style="min-height: 45px; margin: 20px 0 30px; border: 1px solid #eeeeee; 
+					      -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2); -moz-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2); 
+					       box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2); padding-top: 10px; padding-right: 10px;">
+					<div style="float: right;">
 						<h:panelGrid columns="2">
-							<h:outputLabel class="" value="Pesquisar" />
-							<h:inputText id="campo-busca" styleClass="campo-busca"
+							<h:outputLabel value="Pesquisar"
+								style="margin-right:25px; font-size:18px; color:gray;" />
+							<h:inputText id="campo-busca" style="padding:6px; width:600px;"
 								value="#{noticiaMB.filtro}">
 								<f:ajax event="keyup" listener="#{noticiaMB.consultar}"
 									render="listaNoticias" />
 							</h:inputText>
 						</h:panelGrid>
 					</div>
+				</div>
+				<br />
+				<h:dataTable styleClass="table" id="listaNoticias"
+					value="#{not empty noticiaMB.filtro?noticiaMB.noticiasExibidas:noticiaMB.todasNoticias}"
+					var="noti" rendered="#{not empty noticiaMB.todasNoticias}"
+					title="#{noti.descricao}">
 
-					<h:dataTable styleClass="table" id="listaNoticias"
-						value="#{not empty noticiaMB.filtro?noticiaMB.noticiasExibidas:noticiaMB.todasNoticias}"
-						var="noti" rendered="#{not empty noticiaMB.todasNoticias}"
-						title="#{noti.descricao}">
+					<h:column>
+						<f:facet name="header">Título</f:facet>
+						<h:outputText id="campo-titulo" value="#{noti.titulo}"
+							title="#{noti.descricao}" />
+					</h:column>
 
-						<h:column>
-							<f:facet name="header">Título</f:facet>
-							<h:outputText id="campo-titulo" value="#{noti.titulo}"
-								title="#{noti.descricao}" />
-						</h:column>
-
-						<h:column>
-							<f:facet name="header">Autor</f:facet>
-							<h:outputText id="campo-autor" value="#{noti.autor}" />
-						</h:column>
+					<h:column>
+						<f:facet name="header">Autor</f:facet>
+						<h:outputText id="campo-autor" value="#{noti.autor}" />
+					</h:column>
 
 
-						<h:column>
-							<f:facet name="header">Categoria</f:facet>
-							<h:outputText value="#{noti.categoria.nome}" />
-						</h:column>
+					<h:column>
+						<f:facet name="header">Categoria</f:facet>
+						<h:outputText value="#{noti.categoria.nome}" />
+					</h:column>
 
-						<h:column headerClass="edit-column">
-							<f:facet name="header">Editar</f:facet>
-							<h:commandButton image="#{'resources/img/editar.png'}"
-								title="Editar" action="#{noticiaMB.redirecionaEditarNoticia}">
-								<f:setPropertyActionListener
-									target="#{noticiaMB.noticiaSelecionada}" value="#{noti}" />
-							</h:commandButton>
-						</h:column>
+					<h:column headerClass="edit-column">
+						<f:facet name="header">Editar</f:facet>
+						<h:commandButton image="#{'resources/img/editar.png'}"
+							title="Editar" action="#{noticiaMB.redirecionaEditarNoticia}">
+							<f:setPropertyActionListener
+								target="#{noticiaMB.noticiaSelecionada}" value="#{noti}" />
+						</h:commandButton>
+					</h:column>
 
-					</h:dataTable>
-				</h:form>
+				</h:dataTable>
+			</h:form>
 		</div>
 	</ui:define>
 </ui:composition>
