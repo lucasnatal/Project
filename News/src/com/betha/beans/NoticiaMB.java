@@ -31,7 +31,7 @@ public class NoticiaMB {
 	private Repository repo = new Repository();
 
 	private final String CAMINHO_IMG = "/resources/img/noticias/";
-	
+
 	public NoticiaMB() {
 		this.noticias = repo.getNoticias();
 		this.categorias = repo.getCategorias();
@@ -41,17 +41,6 @@ public class NoticiaMB {
 		this.listaCategorias = this.categorias.selecionar();
 
 		this.facesUtil = new FacesUtil();
-	}
-
-	public void gravar() {
-
-		this.noticias = repo.getNoticias();
-		this.noticias.inserir(novaNoticia);
-
-		// Necessário no escopo session para atualizar a lista de edição.
-		this.todasNoticias.add(novaNoticia);
-
-		this.novaNoticia = new Noticia();
 	}
 
 	public Noticia getNovaNoticia() {
@@ -100,6 +89,31 @@ public class NoticiaMB {
 		}
 	}
 
+	public void gravar() {
+
+		try {
+			this.noticias = repo.getNoticias();
+			this.noticias.inserir(novaNoticia);
+
+			// Necessário no escopo session para atualizar a lista de edição.
+			this.todasNoticias.add(novaNoticia);
+			facesUtil.adicionarMensagem(FacesMessage.SEVERITY_INFO,
+					"Cadastro realizado com sucesso!");
+		} catch (Exception e) {
+			facesUtil.adicionarMensagem(FacesMessage.SEVERITY_ERROR,
+					"Não foi possível cadastar!");
+		} finally {
+
+			this.novaNoticia = new Noticia();
+		}
+
+	}
+	
+	public void limparNoticia(){
+
+		this.novaNoticia = new Noticia();
+	}
+
 	public void atualizar() {
 
 		try {
@@ -124,7 +138,7 @@ public class NoticiaMB {
 	}
 
 	public String redirecionaExibeNoticia(Noticia noticia) {
-		return "view?faces-redirect=true&noticia="+noticia.getId();
+		return "view?faces-redirect=true&noticia=" + noticia.getId();
 	}
 
 	public Noticia getNoticiaSelecionada() {
@@ -146,8 +160,8 @@ public class NoticiaMB {
 	public String getCAMINHO_IMG() {
 		return CAMINHO_IMG;
 	}
-	
-	public void setNoticiaById(Integer id){
+
+	public void setNoticiaById(Integer id) {
 
 		this.noticias = repo.getNoticias();
 		this.noticiaSelecionada = this.noticias.porCodigo(id);

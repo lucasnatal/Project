@@ -3,24 +3,28 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core">
-	
+
 	<ui:define name="title">Inserir Notícia</ui:define>
-	
+
 	<ui:define name="content">
-	
-		
-		<h:form class="insert-form">
+
+
+		<h:form id="cadastro-noticia" class="insert-form">
 
 			<div class="container" style="margin-top: 82px;">
 				<legend>Notícia</legend>
 				<fieldset>
-
+					<h5>
+						<h:messages style="margin: 20px 0px 15px 0px; padding-left: 40px"
+							styleClass="alert alert-success" infoClass="check-info" />
+					</h5>
 					<!-- Título -->
 					<div class="control-group">
 						<h:outputLabel class="control-label" value="Título" />
 						<div class="controls">
 							<h:inputText id="titulo" name="titulo" placeholder="título"
-								styleClass="input-xlarge" type="text" value="#{noticiaMB.novaNoticia.titulo}"/>
+								styleClass="input-xlarge" type="text"
+								value="#{noticiaMB.novaNoticia.titulo}" />
 						</div>
 					</div>
 					<!-- Autor -->
@@ -28,7 +32,8 @@
 						<h:outputLabel class="control-label" value="Autor" />
 						<div class="controls">
 							<h:inputText id="autor" name="autor" placeholder="autor"
-								styleClass="input-xlarge" type="text" value="#{noticiaMB.novaNoticia.autor}"/>
+								styleClass="input-xlarge" type="text"
+								value="#{noticiaMB.novaNoticia.autor}" />
 						</div>
 					</div>
 
@@ -36,9 +41,10 @@
 					<div class="control-group">
 						<h:outputLabel class="control-label" value="Categoria" />
 						<div class="controls">
-							<h:selectOneMenu id="categoria" name="categoria"   value="#{noticiaMB.novaNoticia.categoria}" 
-								class="input-xlarge">
-								<f:selectItems value="#{noticiaMB.listaCategorias}"  var="cat" itemLabel="#{cat.nome}" itemValue="#{cat}" />
+							<h:selectOneMenu id="categoria" name="categoria"
+								value="#{noticiaMB.novaNoticia.categoria}" class="input-xlarge">
+								<f:selectItems value="#{noticiaMB.listaCategorias}" var="cat"
+									itemLabel="#{cat.nome}" itemValue="#{cat}" />
 							</h:selectOneMenu>
 						</div>
 					</div>
@@ -48,7 +54,8 @@
 					<div class="control-group">
 						<h:outputLabel class="control-label" value="Descrição" />
 						<div class="controls">
-							<h:inputTextarea id="descricao" name="descricao" rows="12" cols="100" style="width:600px;;"
+							<h:inputTextarea id="descricao" name="descricao" rows="12"
+								cols="100" style="width:600px;;"
 								value="#{noticiaMB.novaNoticia.descricao}" />
 						</div>
 					</div>
@@ -57,9 +64,23 @@
 					<div class="control-group">
 						<label class="control-label"></label>
 						<div class="controls">
-							<h:commandButton action="#{noticiaMB.gravar}" value="Gravar" styleClass="btn btn-primary" id="gravar"/>
+							<h:commandButton class="btn btn-primary" title="Gravar"
+								value="Gravar" action="#{noticiaMB.gravar}" />
+
+							<h:commandButton style="margin:10px" class="btn btn-primary"
+								title="Limpar" immediate="true" value="Limpar"
+								 >
+								
+								<f:ajax event="click" listener="#{noticiaMB.limparNoticia}"
+									render="cadastro-noticia" />
+									
+									
+									</h:commandButton>
+
+
 						</div>
 					</div>
+
 
 				</fieldset>
 			</div>
